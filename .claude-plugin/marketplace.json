@@ -1,0 +1,5 @@
+{
+  "name": "idle-compact-local",
+  "owner": { "name": "local" },
+  "plugins": [{ "name": "idle-compact", "source": "./" }]
+}

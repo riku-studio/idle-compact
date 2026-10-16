@@ -1,0 +1,25 @@
+{
+  "name": "idle-compact",
+  "version": "0.1.0",
+  "description": "Compacts an idle session just before its 1-hour prompt cache expires, so resuming later reloads a short summary instead of the full context.",
+  "userConfig": {
+    "idleMinutes": {
+      "type": "number",
+      "title": "Idle minutes before compacting",
+      "description": "Minutes after the last turn ends before the session is compacted. Keep it under 60 so the compaction still reads from the warm cache.",
+      "default": 58
+    },
+    "minTokens": {
+      "type": "number",
+      "title": "Minimum context tokens",
+      "description": "Skip compacting when the context is smaller than this; a small context is cheap to reload anyway.",
+      "default": 30000
+    },
+    "instructions": {
+      "type": "string",
+      "title": "Summary instructions",
+      "description": "Optional text passed to the compaction, as typed after /compact.",
+      "default": ""
+    }
+  }
+}
