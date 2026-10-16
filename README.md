@@ -1,51 +1,53 @@
 # idle-compact
 
-Claude Code / Claude 桌面版的 mod：会话空闲接近 1 小时提示缓存过期时（默认 58 分钟），自动执行 `/compact`，下次回来只需重新加载一段摘要，而不是整段上下文。
+[English](README.md) | [简体中文](README.zh-CN.md) | [日本語](README.ja.md)
 
-- 主对话每结束一轮开始倒计时；有新一轮开始就取消，结束后重新计时。
-- 上下文小于阈值（默认 30000 tokens）时跳过。
-- 每次空闲只压缩一次；手动 `/compact` 或自动压缩过后也会取消倒计时。
-- 压缩完成后弹提示，显示压缩前后 token 数和压缩本身的用量。
+A mod for Claude Code / Claude Desktop that automatically runs `/compact` when a session has been idle for almost an hour, just before its prompt cache expires (58 minutes by default). When you return, only a summary needs to be reloaded instead of the full context.
 
-## 安装
+- Starts a countdown after each turn in the main conversation ends. A new turn cancels the countdown, which restarts when that turn ends.
+- Skips compaction when the context is below the threshold (30,000 tokens by default).
+- Compacts only once per idle period. Manual `/compact` or automatic compaction also cancels the countdown.
+- Shows a notification when compaction finishes, including the token counts before and after compaction and the token usage of compaction itself.
 
-从 GitHub（`<owner>/<repo>` 换成实际仓库）：
+## Installation
+
+From GitHub (replace `<owner>/<repo>` with the actual repository):
 
 ```bash
 claude plugin install idle-compact --marketplace <owner>/<repo>
 ```
 
-或在 Claude Code 终端会话里输入：`/plugin install idle-compact --marketplace <owner>/<repo>`
+Or enter `/plugin install idle-compact --marketplace <owner>/<repo>` in a Claude Code terminal session.
 
-从 git 地址或本地文件夹：
+From a Git URL or a local folder:
 
 ```bash
-claude plugin marketplace add <git 地址或文件夹路径>
+claude plugin marketplace add <git-url-or-folder-path>
 ```
 
 ```bash
 claude plugin install idle-compact@idle-compact-local
 ```
 
-在桌面版里：点输入框旁的 +，选 Plugins → Add marketplace，填仓库或路径，然后 Add plugin。
+In Claude Desktop: click the + next to the input box, choose Plugins → Add marketplace, enter the repository or path, then choose Add plugin.
 
-## 设置
+## Configuration
 
-| 选项 | 默认 | 说明 |
+| Option | Default | Description |
 | --- | --- | --- |
-| `idleMinutes` | 58 | 最后一轮结束后多少分钟压缩，应小于 60 |
-| `minTokens` | 30000 | 上下文小于该值时不压缩 |
-| `instructions` | 空 | 传给压缩的摘要指令，相当于 `/compact` 后面的文字 |
+| `idleMinutes` | 58 | Minutes to wait after the last turn ends before compacting; should be less than 60 |
+| `minTokens` | 30000 | Skip compaction when the context is below this token count |
+| `instructions` | Empty | Summary instructions passed to compaction, equivalent to the text after `/compact` |
 
-例如：`claude plugin install idle-compact@idle-compact-local --config idleMinutes=55`
+Example: `claude plugin install idle-compact@idle-compact-local --config idleMinutes=55`
 
-## 注意
+## Notes
 
-- 压缩本身会读一遍整段上下文（缓存读取价）并生成摘要；如果之后不再回到这个会话，这部分花费就白花了。
-- 压缩会丢失细节。
-- 计时器跑在会话进程里，关闭应用或会话进程停止后不会触发。
+- Compaction itself reads the full context (at the cached-input rate) and generates a summary. If you never return to the session, that cost is wasted.
+- Compaction loses details.
+- The timer runs in the session process. It will not fire after the app closes or the session process stops.
 
-## 测试
+## Testing
 
 ```bash
 claude plugin test .
