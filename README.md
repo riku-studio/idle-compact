@@ -11,13 +11,13 @@ A mod for Claude Code / Claude Desktop that automatically runs `/compact` when a
 
 ## Installation
 
-From GitHub (replace `<owner>/<repo>` with the actual repository):
+From GitHub: [riku-studio/idle-compact](https://github.com/riku-studio/idle-compact)
 
 ```bash
-claude plugin install idle-compact --marketplace <owner>/<repo>
+claude plugin install idle-compact --marketplace riku-studio/idle-compact
 ```
 
-Or enter `/plugin install idle-compact --marketplace <owner>/<repo>` in a Claude Code terminal session.
+Or enter `/plugin install idle-compact --marketplace riku-studio/idle-compact` in a Claude Code terminal session.
 
 From a Git URL or a local folder:
 

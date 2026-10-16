@@ -11,13 +11,13 @@ Claude Code / Claude デスクトップ版向けの mod です。セッション
 
 ## インストール
 
-GitHub からインストールする場合（`<owner>/<repo>` を実際のリポジトリに置き換えてください）：
+GitHub からインストール：[riku-studio/idle-compact](https://github.com/riku-studio/idle-compact)
 
 ```bash
-claude plugin install idle-compact --marketplace <owner>/<repo>
+claude plugin install idle-compact --marketplace riku-studio/idle-compact
 ```
 
-または、Claude Code のターミナルセッションで `/plugin install idle-compact --marketplace <owner>/<repo>` を入力します。
+または、Claude Code のターミナルセッションで `/plugin install idle-compact --marketplace riku-studio/idle-compact` を入力します。
 
 Git URL またはローカルフォルダーからインストールする場合：
 

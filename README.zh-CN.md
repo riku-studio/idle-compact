@@ -11,13 +11,13 @@ Claude Code / Claude 桌面版的 mod：会话空闲接近 1 小时提示缓存�
 
 ## 安装
 
-从 GitHub（`<owner>/<repo>` 换成实际仓库）：
+从 GitHub 安装：[riku-studio/idle-compact](https://github.com/riku-studio/idle-compact)
 
 ```bash
-claude plugin install idle-compact --marketplace <owner>/<repo>
+claude plugin install idle-compact --marketplace riku-studio/idle-compact
 ```
 
-或在 Claude Code 终端会话里输入：`/plugin install idle-compact --marketplace <owner>/<repo>`
+或在 Claude Code 终端会话里输入：`/plugin install idle-compact --marketplace riku-studio/idle-compact`
 
 从 git 地址或本地文件夹：
 
